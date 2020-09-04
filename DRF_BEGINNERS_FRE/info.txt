@@ -1,0 +1,14 @@
+*************serializers.SerializerMethodField()*********************
+
+A read-only field that get its representation from calling a method on the
+parent serializer class. The method called will be of the form
+"get_{field_name}", and should take a single argument, which is the
+object being serialized.
+
+For example:
+class ExampleSerializer(self):
+    extra_info = SerializerMethodField()
+
+    def get_extra_info(self, obj):
+    	'''object will contain the model instances so you can query whatever you want to return like obj.user.username'''
+        return ...  # Calculate some data to return.
